@@ -1,5 +1,5 @@
 import app from './index.js';
-import { connectUsingMongoose } from './config/mongodb.js';
+import { connectUsingMongoose } from './backend/config/mongodb.js';
 
 appPort = process.env.PORT || 5000;
 
