@@ -1,12 +1,24 @@
+import express from "express";
+import FeesController from "./feesController.js";
 
-import express from 'express';
-const { addFee, getFees, updateFeeStatus } = require('./feeController');
+const feesController = new FeesController();
+const feesRouter = express.Router();
 
-const router = express.Router();
+feesRouter.post("/", (req, res) => {
+   feesController.addFee(req, res); // Add a fee record
+});
 
-router.post('/', addFee); // Add a fee record
-router.get('/', getFees); // Get all fee records
-router.patch('/:id', updateFeeStatus);  // Update fee payment status
-router.get('/:id', getFees); // Get a fee record by ID
-router.delete('/:id', getFees); // Delete a fee record
-module.exports = router;
+feesRouter.get("/", (req, res) => {
+   feesController.getFees(req, res); // Get all fee records
+});
+feesRouter.patch("/:id", (req, res) => {
+   feesController.updateFeeStatus(req, res); // Update fee payment status
+});
+feesRouter.get("/:id", (req, res) => {
+   feesController.findFee(req, res); // Get a fee record by ID
+});
+feesRouter.delete("/:id", (req, res) => {
+   feesController.getFees(req, res); // Delete a fee record
+});
+
+export default feesRouter;

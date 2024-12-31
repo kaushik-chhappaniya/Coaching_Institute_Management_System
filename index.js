@@ -1,8 +1,8 @@
 // All Imports
 import express from 'express';
 import cors from 'cors';
-import studentRoutes from './features/students/studentRoutes';
-import feeRoutes from './features/fees/feeRoutes';
+import studentRoutes from './backend/features/students/studentRouter.js';
+import feeRoutes from './backend/features/fees/feesRouter.js';
 import dotenv from 'dotenv';
 
 // All configs
