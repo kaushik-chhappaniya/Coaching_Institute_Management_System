@@ -1,23 +1,25 @@
-import studentSchema from './studentSchema.js';
-const Student = studentSchema;
+import mongoose from "mongoose";
+import { Student } from "./studentSchema.js";
 
 // Add a new student
-exports.createStudent = async (data) => {
-  const student = new Student(data);
-  return await student.save();
-};
+export default class StudentRepository {
+   async createStudent(data) {
+      const student = new Student(data);
+      return await student.save();
+   }
 
-// Fetch all students
-exports.getAllStudents = async () => {
-  return await Student.find();
-};
+   // Fetch all students
+   async getAllStudents() {
+      return await Student.find();
+   }
 
-// Find a student by ID
-exports.findStudentById = async (id) => {
-  return await Student.findById(id);
-};
+   // Find a student by ID
+   async findStudentById(id) {
+      return await Student.findById(id);
+   }
 
-// Delete a student by ID
-exports.deleteStudentById = async (id) => {
-  return await Student.findByIdAndDelete(id);
-};
+   // Delete a student by ID
+   async deleteStudentById(id) {
+      return await Student.findByIdAndDelete(id);
+   }
+}
